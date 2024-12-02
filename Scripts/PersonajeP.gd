@@ -3,10 +3,10 @@ extends CharacterBody2D
 var health: int = 10
 var speed := 120.0
 var direction := 0.0
-var jump_force := 150.0
-const GRAVITY := 9.8
+var jump_force := 350.0
+const GRAVITY := 500
 
-@onready var anim = $AnimationPlayer	
+@onready var anim = $AnimationPlayer
 @onready var sprite = $Sprite2D
 
 func _physics_process(delta):

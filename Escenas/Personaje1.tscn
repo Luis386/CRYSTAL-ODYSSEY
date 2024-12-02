@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://b32aknr6lw6hu"]
+[gd_scene load_steps=12 format=3 uid="uid://b32aknr6lw6hu"]
 
 [ext_resource type="Script" path="res://Scripts/PersonajeP.gd" id="1_b5cbw"]
 [ext_resource type="Texture2D" uid="uid://dmsurfo8uvvum" path="res://Assets/char_blue.png" id="2_ys33g"]
+[ext_resource type="Script" path="res://Escenas/Camera2D.gd" id="3_r7yo7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xbphv"]
 radius = 33.2415
@@ -118,5 +119,8 @@ frame = 2
 libraries = {
 "": SubResource("AnimationLibrary_rle5p")
 }
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("3_r7yo7")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
