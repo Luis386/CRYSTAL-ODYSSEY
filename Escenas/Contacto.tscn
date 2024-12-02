@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c01fp27o1iy7u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8pjrv"]
+radius = 48.6621
+
+[node name="Grupo_Contacto" type="StaticBody2D" groups=["Contacto"]]
+
+[node name="Espinas" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+shape = SubResource("CircleShape2D_8pjrv")

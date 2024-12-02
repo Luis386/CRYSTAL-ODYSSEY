@@ -1,0 +1,122 @@
+[gd_scene load_steps=11 format=3 uid="uid://b32aknr6lw6hu"]
+
+[ext_resource type="Script" path="res://Scripts/PersonajeP.gd" id="1_b5cbw"]
+[ext_resource type="Texture2D" uid="uid://dmsurfo8uvvum" path="res://Assets/char_blue.png" id="2_ys33g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xbphv"]
+radius = 33.2415
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ed8mg"]
+size = Vector2(55.25, 45.5)
+
+[sub_resource type="Animation" id="Animation_21nx8"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_spx86"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_4naxs"]
+resource_name = "correr"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19, 20, 21, 22, 23]
+}
+
+[sub_resource type="Animation" id="Animation_uy4lo"]
+resource_name = "Saltar"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [24, 26, 27, 28, 29, 30, 31]
+}
+
+[sub_resource type="Animation" id="Animation_2vsuw"]
+resource_name = "Salto_caida"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [30, 32, 33, 35, 37, 38, 39, 40]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rle5p"]
+_data = {
+"RESET": SubResource("Animation_spx86"),
+"Saltar": SubResource("Animation_uy4lo"),
+"Salto_caida": SubResource("Animation_2vsuw"),
+"correr": SubResource("Animation_4naxs"),
+"idle": SubResource("Animation_21nx8")
+}
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_b5cbw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(11, 0)
+shape = SubResource("CircleShape2D_xbphv")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(15, 1)
+shape = SubResource("RectangleShape2D_ed8mg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(11, -36)
+scale = Vector2(2.60714, 2.48214)
+texture = ExtResource("2_ys33g")
+hframes = 8
+vframes = 7
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rle5p")
+}
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
