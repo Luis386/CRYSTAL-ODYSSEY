@@ -47,8 +47,8 @@ func _physics_process(delta):
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Contacto"):
-		health -= 2
-		print("Salud:", health)
+		health -= 10
+		print("health")
 
 
 #func _on_area_2d_body_entered(body):

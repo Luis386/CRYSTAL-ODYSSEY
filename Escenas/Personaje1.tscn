@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://dmsurfo8uvvum" path="res://Assets/char_blue.png" id="2_ys33g"]
 [ext_resource type="Script" path="res://Escenas/Camera2D.gd" id="3_r7yo7"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xbphv"]
-radius = 33.2415
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sg76f"]
+size = Vector2(48, 74)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ed8mg"]
-size = Vector2(55.25, 45.5)
+size = Vector2(53, 62)
 
 [sub_resource type="Animation" id="Animation_21nx8"]
 resource_name = "idle"
@@ -98,17 +98,17 @@ _data = {
 script = ExtResource("1_b5cbw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(11, 0)
-shape = SubResource("CircleShape2D_xbphv")
+position = Vector2(7, -5)
+shape = SubResource("RectangleShape2D_sg76f")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(15, 1)
+position = Vector2(7.5, 2)
 shape = SubResource("RectangleShape2D_ed8mg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(11, -36)
+position = Vector2(12, -43)
 scale = Vector2(2.60714, 2.48214)
 texture = ExtResource("2_ys33g")
 hframes = 8
